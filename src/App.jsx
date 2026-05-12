@@ -1,9 +1,13 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
+import React from "react";
+import Navbar from "../components/Navbar";
+import ToPost from "../components/home/ToPost";
 
 const App = () => {
   return (
-    <Navbar></Navbar>
+    <div className="max-w-11/12 mx-auto">
+      <Navbar></Navbar>
+      <ToPost></ToPost>
+    </div>
   );
 };
 
