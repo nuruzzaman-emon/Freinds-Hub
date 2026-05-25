@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Link } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
+  const { loginUser } = use(AuthContext);
   const {
     register,
     handleSubmit,
@@ -15,6 +17,9 @@ const Login = () => {
     setLoading(true);
     console.log(data);
     // login logic here
+    loginUser(data.email, data.password).then((data) => {
+      console.log(data);
+    });
 
     setLoading(false);
   };

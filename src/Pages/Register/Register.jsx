@@ -2,20 +2,27 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Link } from "react-router";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
+  const { createUser } = useAuth();
+
   const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const handleRegister = (data) => {
     setLoading(true);
     console.log(data);
     // login logic here
+    createUser(data.email, data.password).then((data) => {
+      console.log(data);
+    });
 
-    setLoading(true);
+    setLoading(false);
   };
 
   return (
@@ -96,7 +103,7 @@ const Register = () => {
               {loading && (
                 <AiOutlineLoading3Quarters className="animate-spin" />
               )}{" "}
-              Login
+              Register
             </button>
           </form>
 
